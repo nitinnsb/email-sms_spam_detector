@@ -17,6 +17,12 @@ text_porter = PorterStemmer()
 tfidf = pickle.load(open('./vectorizer.pkl', 'rb'))
 classifier = pickle.load(open('./model.pkl', 'rb'))
 
+st.set_page_config(
+    page_title="SMS Spam Classifier",
+    page_icon="📩",
+    layout="wide",
+)
+
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -33,11 +39,7 @@ page_bg_img = """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-st.set_page_config(
-    page_title="SMS Spam Classifier",
-    page_icon="📩",
-    layout="wide",
-)
+
 
 def text_preprocessing(text):
     text =  text.lower() # make all characters in lower case
