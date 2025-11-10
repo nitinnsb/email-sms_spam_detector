@@ -10,7 +10,7 @@ st.set_page_config(
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://i.postimg.cc/Y0H8RBLC/Gemini-Generated-Image-iz76q8iz76q8iz76.png");
+    background-image: url("https://i.postimg.cc/mr67hfyc/Black-Yellow-Aesthetic-Samurai-Desktop-Wallpaper.png");
     background-size: cover;              /* fills the whole screen */
     background-position: center;         /* centers the image */
     background-repeat: no-repeat;        /* no tiling */
