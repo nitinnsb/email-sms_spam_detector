@@ -17,6 +17,22 @@ text_porter = PorterStemmer()
 tfidf = pickle.load(open('./vectorizer.pkl', 'rb'))
 classifier = pickle.load(open('./model.pkl', 'rb'))
 
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: url("https://i.postimg.cc/GptS6K5y/3816798.jpg");
+    background-size: cover;              /* fills the whole screen */
+    background-position: center;         /* centers the image */
+    background-repeat: no-repeat;        /* no tiling */
+}
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);           /* transparent header */
+}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 st.set_page_config(
     page_title="SMS Spam Classifier",
     page_icon="📩",
