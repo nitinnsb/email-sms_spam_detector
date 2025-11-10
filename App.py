@@ -11,7 +11,7 @@ st.set_page_config(
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://i.postimg.cc/GptS6K5y/3816798.jpg");
+    background-image: url("https://i.postimg.cc/qRhBB8z7/3825943.jpg");
     background-size: cover;              /* fills the whole screen */
     background-position: center;         /* centers the image */
     background-repeat: no-repeat;        /* no tiling */
