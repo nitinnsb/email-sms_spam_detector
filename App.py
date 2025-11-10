@@ -16,7 +16,7 @@ page_bg_img = """
 <style>
 /* Fullscreen background */
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://i.postimg.cc/k5VDDrH9/Whats-App-Image-2025-11-10-at-15-39-05-c29ef7d9.jpg");
+    background-image: url("");
     background-size: cover;              /* fills the whole screen */
     background-position: center;         /* centers the image */
     background-repeat: no-repeat;        /* no tiling */
