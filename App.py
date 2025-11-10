@@ -17,70 +17,12 @@ page_bg_img = """
 /* Fullscreen background */
 [data-testid="stAppViewContainer"] {
     background-image: url("https://i.postimg.cc/k5VDDrH9/Whats-App-Image-2025-11-10-at-15-39-05-c29ef7d9.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover;              /* fills the whole screen */
+    background-position: center;         /* centers the image */
+    background-repeat: no-repeat;        /* no tiling */
 }
-
-/* Transparent header */
-[data-testid="stHeader"], [data-testid="stToolbar"] {
-    background: rgba(0,0,0,0);
-}
-
-/* Center content nicely */
-.block-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-/* Glass box style */
-.main-box {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 2.5rem 3rem;
-    border-radius: 1rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
-    text-align: center;
-    width: 90%;
-    max-width: 600px;
-}
-
-/* White readable text */
-h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
-    color: #ffffff !important;
-}
-
-/* Text input area */
-textarea {
-    background-color: rgba(255,255,255,0.1) !important;
-    color: #ffffff !important;
-    border: 1px solid #00ADB5 !important;
-    border-radius: 10px !important;
-}
-
-/* Button styling */
-button[kind="primary"] {
-    background: linear-gradient(90deg, #00ADB5, #007B83) !important;
-    color: white !important;
-    font-weight: bold !important;
-    border-radius: 10px !important;
-    border: none !important;
-    padding: 0.6rem 1.5rem !important;
-    transition: 0.3s ease;
-}
-button[kind="primary"]:hover {
-    background: linear-gradient(90deg, #007B83, #00ADB5) !important;
-    transform: scale(1.03);
-}
-
-/* Alert styling (Spam / Not Spam) */
-.stAlert {
-    background: rgba(255,255,255,0.15) !important;
-    border-radius: 10px !important;
-    font-size: 1.1rem !important;
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);           /* transparent header */
 }
 </style>
 """
