@@ -1,28 +1,13 @@
 import streamlit as st
-import pickle
-import string
-import nltk
-nltk.download('punkt_tab')
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
 
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
-from nltk.stem.porter import PorterStemmer
-text_porter = PorterStemmer()
-tfidf = pickle.load(open('./vectorizer.pkl', 'rb'))
-classifier = pickle.load(open('./model.pkl', 'rb'))
-
+# ✅ MUST be the first Streamlit command
 st.set_page_config(
     page_title="SMS Spam Classifier",
     page_icon="📩",
     layout="wide",
 )
 
+# --- background image ---
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -36,57 +21,53 @@ page_bg_img = """
 }
 </style>
 """
-
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+# --- now the rest of your imports and setup ---
+import pickle
+import string
+import nltk
+from nltk.stem.porter import PorterStemmer
+
+# download resources after page_config
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+text_porter = PorterStemmer()
+tfidf = pickle.load(open('./vectorizer.pkl', 'rb'))
+classifier = pickle.load(open('./model.pkl', 'rb'))
 
 
+# --- preprocessing function ---
 def text_preprocessing(text):
-    text =  text.lower() # make all characters in lower case
-    text = nltk.word_tokenize(text) # make a list of all words
-    y = []
-    
-    for i in text:    # keeping only alpha numeric characters
-        if i.isalnum():
-            y.append(i)
-
-    text = y[:]
-    y.clear()
-    
-    for i in text:
-        if i not in nltk.corpus.stopwords.words("english") and i not in string.punctuation:
-            y.append(i)
-
-    text = y[:]
-    y.clear()
-
-    for i in text:
-        y.append(text_porter.stem(i))
-
-    return " ".join(y)
+    text = text.lower()
+    text = nltk.word_tokenize(text)
+    y = [i for i in text if i.isalnum()]
+    text = [i for i in y if i not in nltk.corpus.stopwords.words("english") and i not in string.punctuation]
+    text = [text_porter.stem(i) for i in text]
+    return " ".join(text)
 
 
+# --- UI section ---
+st.title('📩 SMS Spam Classifier')
+st.write("This app classifies messages as **Spam** or **Not Spam** based on their content.")
 
-st.title('SMS Spam Classifier')
-st.write("This application classifies messages as 'Spam' or 'Not Spam' based on text content.")
-
-input = st.text_area('Enter the message')
+input_text = st.text_area('✉️ Enter your message here:')
 
 if st.button('Predict'):
-    if input:
-        # Preproccess input
-        input = text_preprocessing(input)
-
-        # text vectorization
-        input = tfidf.transform([input])
-
-        # predict
-        result = classifier.predict(input)[0]
-
-        # display
+    if input_text.strip():
+        processed = text_preprocessing(input_text)
+        vectorized = tfidf.transform([processed])
+        result = classifier.predict(vectorized)[0]
         if result == 1:
-            st.header('Spam')
+            st.success('🚨 **Spam Detected!**')
         else:
-            st.header('Not Spam')
+            st.info('✅ **Not Spam**')
     else:
-        st.write('Please enter a message to classify')
+        st.warning('⚠️ Please enter a message to classify.')
