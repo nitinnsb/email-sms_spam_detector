@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="SMS Spam Classifier",
+    page_title="Email/SMS Spam Detector",
     page_icon="📩",
     layout="wide",
 )
@@ -67,8 +67,8 @@ def text_preprocessing(text):
 
 
 
-st.title('SMS Spam Classifier')
-st.write("This application classifies messages as 'Spam' or 'Not Spam' based on text content.")
+st.title('Email/SMS Spam Detector')
+st.write("This application Detects if message is 'Spam' or 'Not Spam' based on text content.")
 
 input = st.text_area('Enter the message')
 
