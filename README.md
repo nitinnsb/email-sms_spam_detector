@@ -81,7 +81,7 @@ The **Multinomial Naive Bayes (MNB)** model was chosen as the final model.
 
 ---
 
-### 4. Screenshots
+## Screenshots
 ![spam](spam.png)
 ---
 ![not_spam](not_spam.png)
