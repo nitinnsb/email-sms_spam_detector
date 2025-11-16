@@ -1,4 +1,4 @@
-# SMS Spam Detection Project
+# Project Overview
 
 This project is a machine learning model built to classify SMS messages as either "spam" or "ham" (not spam). Using Natural Language Processing (NLP) techniques and a Naive Bayes classifier, this model achieves high precision in identifying and filtering unwanted messages.
 
